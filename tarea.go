@@ -14,8 +14,8 @@ import (
 )
 
 type Dirreq struct {
-	Origin     string `json:"origin"`
-	Desination string `json:"destination"`
+	Origin      string `json:"origin"`
+	Destination string `json:"destination"`
 }
 
 type Restaurantreq struct {
@@ -35,7 +35,7 @@ func getDirections(w http.ResponseWriter, p *http.Request) {
 
 	r := &maps.DirectionsRequest{
 		Origin:      orig.Origin,
-		Destination: orig.Desination,
+		Destination: orig.Destination,
 	}
 
 	listarutas, _, errr := c.Directions(context.Background(), r)
@@ -130,8 +130,8 @@ func getRestaurants(w http.ResponseWriter, p *http.Request) {
 
 func main() {
 	srvs := mux.NewRouter()
-	srvs.HandleFunc("/ej1", getDirections).Methods("POST")
-	srvs.HandleFunc("/ej2", getRestaurants).Methods("POST")
+	srvs.HandleFunc("/ejercicio1", getDirections).Methods("POST")
+	srvs.HandleFunc("/ejercicio2", getRestaurants).Methods("POST")
 
 	log.Println("Listening to http://localhost:8686...")
 	log.Fatal(http.ListenAndServe(":8686", srvs))
